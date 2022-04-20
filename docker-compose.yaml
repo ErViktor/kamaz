@@ -1,0 +1,28 @@
+version: '2.1'
+
+services:
+  app:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    container_name: app
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/timeweb
+      - SPRING_DATASOURCE_USERNAME=timeweb
+      - SPRING_DATASOURCE_PASSWORD=timeweb
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    ports:
+      - 9440:9440
+  db:
+    image: 'postgres:13.1-alpine'
+    restart: always
+    container_name: db
+    environment:
+      - POSTGRES_USER=timeweb
+      - POSTGRES_PASSWORD=timeweb
+    volumes:
+      - "./storage/migrations:/docker-entrypoint-initdb.d/"
+    ports:
+      - 5531:5432

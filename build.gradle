@@ -1,0 +1,53 @@
+plugins {
+	id 'org.springframework.boot' version '2.6.5'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com'
+version = '1.1.2-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+//apply plugin: 'war'
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'javax.validation:validation-api'
+	implementation 'org.postgresql:postgresql'
+	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+	implementation 'com.google.code.gson:gson:2.8.6'
+	implementation 'org.modelmapper:modelmapper:2.3.0'
+	implementation 'commons-io:commons-io:2.8.0'
+	implementation group: 'org.springframework', name: 'spring-mock', version: '2.0.7'
+	
+	
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
+	implementation 'org.springframework:spring-webmvc'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	
+	/* Jsoup */
+	implementation 'org.jsoup:jsoup:1.13.1'
+	implementation 'javax.validation:validation-api'
+	implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
+	
+	// https://mvnrepository.com/artifact/io.springfox/springfox-boot-starter
+	implementation group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
+	// https://mvnrepository.com/artifact/io.springfox/springfox-swagger2
+	implementation group: 'io.springfox', name: 'springfox-swagger2', version: '3.0.0'
+	// https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui
+	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '3.0.0'
+
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	testImplementation 'org.springframework.security:spring-security-test'
+}
+
+
